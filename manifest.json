@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "chess.com Opening Name Extender",
+    "version": "1.0",
+    "description": "This addon will make the opening names in chess.com more detailed. If you had 1.e4 e5, instead of \"King's Pawn Opening\", it will display \"King's Pawn Opening: 1...e5\". ",
+    "browser_action": {
+        "default_icon": "icons/openings-32.png",
+        "default_title": "Chess.com Opening Name Extender",
+        "default_popup": "popup/popup.html"
+    },
+    "icons": {
+        "48": "icons/openings-48.png",
+        "96": "icons/openings-96.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.chess.com/*"
+            ],
+            "run_at": "document_idle",
+            "js": [
+                "extend_opening_name.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "https://www.chess.com/*",
+        "activeTab",
+        "tabs",
+        "storage"
+    ]
+}
