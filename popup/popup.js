@@ -4,16 +4,12 @@ function log(text) {
     s.innerHTML = text;
     document.getElementById("console").insertAdjacentElement("beforeend", s)
 }
-function onYes(item = "") {
-    log(`${JSON.stringify(item)}
-`);
-}
 function onErr(err) {
     log(err);
 }
 (async () => {
     await browser.storage.local.get("toggle").then(async (item) => {
-        toggle.innerHTML = (item.toggle ?? true) ? "Disable Extending Opening Name" : "Enable Extending Opening Name";
+        toggle.innerHTML = (item.toggle ?? true) ? "Disable Extension" : "Enable Extension";
         if (item.toggle === undefined) await browser.storage.local.set({ toggle: true, overflowBehavior: "ellipses" });
         toggle.setAttribute("data-state", item.toggle);
     }, onErr)
@@ -22,10 +18,10 @@ function onErr(err) {
     }, onErr)
     document.getElementById("toggle").addEventListener("click", () => {
         toggle.setAttribute("data-state", !(toggle.getAttribute("data-state") == 'true'));
-        toggle.innerHTML = toggle.getAttribute("data-state") == 'true' ? "Disable Extending Opening Name" : "Enable Extending Opening Name";
-        browser.storage.local.set({ toggle: toggle.getAttribute("data-state") == 'true' }).then(onYes, onErr);
+        toggle.innerHTML = toggle.getAttribute("data-state") == 'true' ? "Disable Extension" : "Enable Extension";
+        browser.storage.local.set({ toggle: toggle.getAttribute("data-state") == 'true' });
     })
     document.getElementById("overflowBehavior").addEventListener("change", () => {
-        browser.storage.local.set({ overflowBehavior: document.getElementById("overflowBehavior").value }).then(onYes, onErr);
+        browser.storage.local.set({ overflowBehavior: document.getElementById("overflowBehavior").value });
     })
 })()
