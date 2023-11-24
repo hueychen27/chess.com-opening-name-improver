@@ -28,5 +28,10 @@
         "activeTab",
         "tabs",
         "storage"
-    ]
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{e269acae-e515-4d59-87c3-16a09e63baf2}"
+        }
+    }
 }
