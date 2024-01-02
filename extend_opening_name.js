@@ -29,7 +29,7 @@ async function extendOpeningName() {
     const e = document.querySelector(".eco-opening-name-extended");
     const n = await querySelector(".eco-opening-name");
     const s = document.createElement("span");
-    const t = /\d/.test(el.href) ? el.href.replace(/^\D*(?=\d)/, "").replace(/-/g, " ").replace(/(\d)/, ": $1") : "";
+    const t = /\d/.test(el.href) ? el.href.replace(/^\D*(?=\d)/, "").replace(/(?<!O-)O-O-(?!O)/g, " O-O ").replace(/(?<!O)-(?!O)/g, " ").replace(/(\d)/, ": $1").replace(/O-O-O-O/g, "O-O O-O") : "";
     s.innerHTML = t;
     s.className = "eco-opening-name-extended";
     /* Failed attempt at reconstructing the opening name purely from the link
