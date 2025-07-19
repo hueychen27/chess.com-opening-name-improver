@@ -7,3 +7,6 @@ Extension disabled
 ![Opening name without number thing to the right](.github/chess_opening_1.png)
 Extension enabled   
 ![Opening name with number thing to the right](.github/chess_opening_2.png)
+
+# License
+Licensed under the EUPL v1.2

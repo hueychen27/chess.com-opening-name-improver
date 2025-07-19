@@ -24,8 +24,13 @@ const w = (selector) => new Promise(resolve => {
     });
 }) // https://stackoverflow.com/a/61511955/15055490
 
+const isDaily = () => {
+    return window.location.href.includes("game/daily");
+}
+
 async function extendOpeningName() {
-    const el = await querySelector(".eco-opening-opening");
+    // Daily game link uses different element attributes?!?!
+    const el = await querySelector(isDaily() ? "a[aria-label=Openings][href]" : ".eco-opening-opening");
     const e = document.querySelector(".eco-opening-name-extended");
     const n = await querySelector(".eco-opening-name");
     const s = document.createElement("span");
@@ -44,7 +49,7 @@ async function f() {
         await extendOpeningName();
         const n = await querySelector(".eco-opening-name");
         await browser.storage.local.get("overflowBehavior").then(async item => {
-            const p = await querySelector(".eco-opening-panel");
+            const p = await querySelector(isDaily() ? ".eco-opening-component" : ".eco-opening-panel");
             n.style.overflow = p.style.overflow = item.overflowBehavior == "unset" ? "unset" : "";
             n.style.overflowX = p.style.overflowX = item.overflowBehavior == "unset" ? "scroll" : "";
             n.style.textOverflow = p.style.textOverflow = item.overflowBehavior == "unset" ? "unset" : "";
@@ -54,6 +59,7 @@ async function f() {
         const n = await querySelector(".eco-opening-name");
         if (n.querySelector(".eco-opening-name-extended") != null) n.removeChild(n.querySelector(".eco-opening-name-extended"));
     }
-    window.requestAnimationFrame(f)
+    window.requestAnimationFrame(f);
 }
+
 window.requestAnimationFrame(f);
