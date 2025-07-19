@@ -28,6 +28,8 @@ const isDaily = () => {
     return window.location.href.includes("game/daily");
 }
 
+let prev = "";
+
 async function extendOpeningName() {
     // Daily game link uses different element attributes?!?!
     const el = await querySelector(isDaily() ? "a[aria-label=Openings][href]" : ".eco-opening-opening");
@@ -41,6 +43,8 @@ async function extendOpeningName() {
     //@ if (el.hasAttribute("href")) document.querySelector(".eco-opening-name").innerHTML = el.href.replace("https://www.chess.com/openings/", "").replace(/-(?!(Indian|Kann|Slav))/g, " ").replace(/(?<=Opening)\s|(?<=(?<!Petrovs Defense: Three Knights) Game)\s|(?<=Attack)\s|(?<=Queens Gambit (Accepted|Declined))\s|(?<=Kings Gambit (Accepted|Declined))\s|(?<=(French|Sicilian|Petrovs|Scandinavian|Alekhines|Caro-Kann|Dutch|Pirc|Old Benoni|Alapin Sicilian|Closed Sicilian|Slav|Kings Indian|Philidor|Old Indian|Bogo-Indian|Queens Indian|Nimzo-Indian|Grunfeld|Benoni|Semi-Slav) Defense)\s/, ": ").replace(/(?<=Variation)\s|(?<=Sacrifice(?! Variation))\s/, ", ").replace(/(?<=(King|Queen|Alekhine|Petrov))s/g, "'s").replace(/ (?=[\d])/, ": ").replace(/::|,:/g, ":").replace("Grunfeld", "Grünfeld");
     */
     if (e == null && s.innerHTML != "") n.insertAdjacentElement("beforeend", s); // Efficient aughhhhhhh (and also so that you can select the entire opening name)
+    else if (s.innerHTML !== prev && e != null) e.innerHTML = t;
+    prev = e?.innerHTML ?? "";
 }
 
 console.log("Opening extender working...");
