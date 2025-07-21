@@ -1,3 +1,5 @@
+# Migrated to [Codeberg](https://codeberg.org/horsey_guy/chess.com-opening-name-improver) from Github
+
 [![Firefox Add-ons](.github/firefox-addon-badge.png)](https://addons.mozilla.org/firefox/addon/opening-name-extender)
 # What is this?
 This is my first addon I ever made. It is only for Firefox and it is supposed to extend the opening name in [chess.com](chess.com). If you played moves like 1.e4 e5, the opening name will be "King's Pawn Opening: 1...e5" instead of the boring "King's Pawn Opening" Also you can make the opening name scroll instead of being clipped with ellipses.
