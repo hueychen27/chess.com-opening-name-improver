@@ -1,6 +1,6 @@
 import { getAndSyncSynchronizedSettings, SyncError } from "./common/getSyncState.js"
 
-browser.runtime.onInstalled.addEventListener(async () => {
+browser.runtime.onInstalled.addListener(async () => {
     const settings = await getAndSyncSynchronizedSettings();
     if (settings instanceof SyncError) {
         console.error("A SyncError occured:", settings);
