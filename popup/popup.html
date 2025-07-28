@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <link href="popup.css" rel="stylesheet">
     <title>chess.com opening name improver popup</title>
+    <script src="popup.js" type="module"></script>
 </head>
 
 <body>
-    <div id="popup-content">
+    <main id="popup-content">
         <button id="toggle" data-state="true">Disable Extension</button>
         <p id="overflowBehaviorText">Should the opening name be truncated (ellipses) or scrollable (scroll)?</p>
         <select id="overflowBehavior">
@@ -20,9 +21,10 @@
             <li><button id="retrieveSyncButton" class="syncButtons">Retrieve synced settings</button></li>
             <li><button id="deleteSyncButton" data-really="false" class="syncButtons">Delete synced settings</button></li>
         </menu>
-    </div>
-    <pre id="console" style="max-height: 40vh; overflow-y: auto;"></pre>
-    <script src="popup.js"></script>
+        <p id="syncNote">Please note that synced settings will not be automatically applied except on extension installation.</p>
+    </main>
+    <!-- A hidden console for debugging -->
+    <pre id="console" style="overflow-y: auto;"></pre>
 </body>
 
 </html>
